@@ -259,3 +259,4 @@ C:\Users\ander\source\repos\CourseFeedback\CourseFeedback\obj\Debug\net8.0\refin
 C:\Users\ander\source\repos\CourseFeedback\CourseFeedback\obj\Debug\net8.0\CourseFeedback.pdb
 C:\Users\ander\source\repos\CourseFeedback\CourseFeedback\obj\Debug\net8.0\CourseFeedback.genruntimeconfig.cache
 C:\Users\ander\source\repos\CourseFeedback\CourseFeedback\obj\Debug\net8.0\ref\CourseFeedback.dll
+C:\Users\ander\source\repos\CourseFeedback\CourseFeedback\obj\Debug\net8.0\CourseFeedback.sourcelink.json

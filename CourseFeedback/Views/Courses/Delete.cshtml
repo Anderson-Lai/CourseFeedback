@@ -12,10 +12,10 @@
 
 @{
     var user = await userManager.GetUserAsync(User);
-    var userRoles = await userManager.GetRolesAsync(user);
+    // var userRoles = await userManager.GetRolesAsync(user);
 }
 
-@if (user.Id == Model.UserId || userRoles == new List<string>{"Admin"})
+@if (user.Id == Model.UserId || user.Email == "admin@ycdsbk12.ca")
 {
     <div>
         <div class="d-flex flex-column align-items-center">

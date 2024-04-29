@@ -66,7 +66,7 @@ namespace CourseFeedback
                 var userManager = scope.ServiceProvider.
                     GetRequiredService<UserManager<ApplicationUser>>();
 
-                string email = "admin@admin.ca";
+                string email = "admin@ycdsbk12.ca";
                 string password = "!Test123";
 
                 if (await userManager.FindByEmailAsync(email) is null)
@@ -80,6 +80,7 @@ namespace CourseFeedback
                         GraduatingYear = 2026,
                     };
 
+                    await userManager.SetUserNameAsync(admin, email);
                     await userManager.CreateAsync(admin, password);
                     await userManager.AddToRoleAsync(admin, "Admin");
                 }

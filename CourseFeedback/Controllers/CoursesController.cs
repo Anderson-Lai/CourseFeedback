@@ -143,15 +143,22 @@ namespace CourseFeedback.Controllers
 
             var comment = dbContext.Comments.AsNoTracking().FirstOrDefault(c => c.Id == guid);
 
-            var course = new Courses
+            try
             {
-                CourseCode = comment.CourseCode,
-            };
+                var course = new Courses
+                {
+                    CourseCode = comment.CourseCode,
+                };
 
-            dbContext.Comments.Remove(comment);
-            await dbContext.SaveChangesAsync();
+                dbContext.Comments.Remove(comment);
+                await dbContext.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Courses", course);
+                return RedirectToAction("Index", "Courses", course);
+            }
+            catch (NullReferenceException)
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }
