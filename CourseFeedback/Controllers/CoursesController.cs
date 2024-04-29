@@ -102,6 +102,7 @@ namespace CourseFeedback.Controllers
             var sysComment = await dbContext.Comments.FindAsync(guId);
 
             sysComment.Text = comment.Text;
+            sysComment.TimeCreated = DateTime.Now; // refactor display to show this
             sysComment.Edited = true;
 
             await dbContext.SaveChangesAsync();
