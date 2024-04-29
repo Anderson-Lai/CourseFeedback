@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CourseFeedback.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240428212515_seeding")]
-    partial class seeding
+    [Migration("20240429033823_initial migration")]
+    partial class initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -114,6 +114,9 @@ namespace CourseFeedback.Migrations
                     b.Property<string>("CourseCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("Edited")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Text")
                         .IsRequired()
