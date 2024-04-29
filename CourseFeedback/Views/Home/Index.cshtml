@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using CourseFeedback.Models
+@model Courses
+
+<div class="text-center d-flex fw-bold fs-4">
+    <form method="post" style="width: 100%">
+        <div class="d-flex justify-content-center">
+            <label>Find your courses:</label>
+            <input asp-controller="Home" asp-action="Index" asp-for="@Model.CourseCode" placeholder="e.g. ICS3U1"
+                    class="mx-2" style="height: 85%" />
+        </div>
+    </form>
+</div>

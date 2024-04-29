@@ -1,0 +1,133 @@
+﻿@using CourseFeedback.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Courses
+@inject UserManager<ApplicationUser> userManager
+
+
+<div class="d-flex flex-column align-items-center text-center">
+
+    <form method="post" style="width: 100%">
+        <div class="d-flex justify-content-center mb-4">
+            <label>Find your courses:</label>&nbsp;
+            <input asp-controller="Courses" asp-action="Index" asp-for="@Model.CourseCode" placeholder="e.g. ICS3U1"
+                   class="mx-2" style="height: 85%" />
+        </div>
+    </form>
+
+    @if (Model is null)
+    {
+        <h2 class="m-3">Could not find your course code. Please retry</h2>
+    }
+    else
+    {
+        <div class="row">
+            <div class="card col-md-12">
+                <div class="card-body">
+
+                    <h5 class="card-title">@Model.CourseName @Model.CourseCode</h5>
+                    <div class="row my-3">
+
+                        <div class="col-md-6 d-flex align-items-center">
+                            @if (Model.Prerequisites.Any())
+                            {
+                                <p class="text-muted m-0 mx-1">Prerequisites: </p>
+                                foreach (string prereq in Model.Prerequisites)
+                                {
+                                    <p class="my-0 mx-1">@prereq</p>
+                                }
+                            }
+                        </div>
+
+                        <div class="col-md-6 d-flex justify-content-end align-items-center">
+                            <p class="my-0 mx-1">Credits: @Model.CreditNumber</p>
+                            <p class="my-0 mx-1">Type: @Model.Openness</p>
+                            @if (Model.ELearning)
+                            {
+                                <p class="my-0 mx-1">ELearning: @Model.ELearning</p>
+                            }
+                        </div>
+
+                        <div class="col-md-12 d-flex align-items-center mt-1">
+                            @if (Model.Corequisites.Any())
+                            {
+                                <p class="text-muted m-0 mx-1">Corequisites:</p>
+                                foreach(string coreq in Model.Corequisites)
+                                {
+                                    <p class="my-0 mx-1">@coreq</p>
+                                }
+                            }
+                        </div>
+
+                    </div>
+
+                    <p class="card-text">@Model.Description</p>
+                    @if(Model.GuidanceMessage != string.Empty)
+                    {
+                        <h6 class="card-subtitle mt-4 fs-5">Guidance Message: </h6>
+
+                        <br />
+                        <p class="card-text">@Model.GuidanceMessage</p>
+                    }
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <a asp-controller="Courses" asp-action="Add" asp-route-id="@Model.CourseCode" 
+                    class="btn btn-primary m-2">
+                       Add a comment
+                    </a>
+                </div>
+            </div>
+            <div class="d-flex flex-column align-items-center col-md-12">
+                <h4 class="m-3">Comments</h4>
+                @if(Model.Comments is null)
+                {
+                    <p>Create the first comment!</p>
+                }
+                else
+                {
+                    @foreach (var comment in Model.Comments)
+                    {
+                        var user = await userManager.FindByIdAsync(comment.UserId);
+
+                        <div class="col-md-12 m-2 border border-dark text-start">
+                            <div class="d-flex">
+                                <p class="card-body m-0" style="max-width: fit-content">
+                                    Comment by:
+                                    <a class="m-0 p-0" asp-controller="Users" 
+                                    asp-action="Index" asp-route-id="@user.Id">
+                                        @user.FirstName @user.MiddleName
+                                        @user.LastName @comment.TimeCreated
+                                    </a>
+                                </p>
+                                @if (comment.Edited)
+                                {
+                                    <p class="card-body m-0 px-0">(Edited)</p>
+                                }
+                            </div>   
+
+                            <p class="card-body m-0">@comment.Text</p>
+
+                            <div class="d-flex justify-content-end">
+                                <a asp-controller="Courses" asp-action="Edit" asp-route-id="@comment.Id"
+                                   class="btn btn-primary m-2">
+                                    Edit
+                                </a>
+                                <a asp-controller="Courses" asp-action="Delete" asp-route-id="@comment.Id"
+                                   class="btn btn-danger m-2">
+                                    Delete
+                                </a>
+                            </div>  
+
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,38 @@
+﻿@using CourseFeedback.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model Comments
+@inject UserManager<ApplicationUser> userManager
+
+@{
+    var user = await userManager.GetUserAsync(User);
+    var userRoles = await userManager.GetRolesAsync(user);
+}
+
+@if (user.Id == Model.UserId || userRoles == new List<string>{"Admin"})
+{
+    <div>
+        <div class="d-flex flex-column align-items-center">
+            <a class="btn btn-danger fs-3"
+            asp-controller="Courses" asp-action="HandleDelete" asp-route-id="@Model.Id">
+            Confirm Delete</a>
+        </div>
+    </div>
+}
+else
+{
+    <h3>
+        You do not have permission to delete this comment.
+        Please use the account that posted this comment to gain access.
+    </h3>
+    <a asp-controller="Courses" asp-action="HandleEditError" asp-route-id="@Model.CourseCode"
+       class="fs-3">
+        Go back
+    </a>
+}

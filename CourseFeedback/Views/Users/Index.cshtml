@@ -1,0 +1,26 @@
+﻿@using CourseFeedback.Areas.Identity.Data
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model ApplicationUser
+
+<div class="card">
+    <div class="card-header">
+        <h3>@Model.FirstName @Model.MiddleName @Model.LastName</h3>
+        <h4 class="my-3">Class of @Model.GraduatingYear</h4>
+        <hr />
+    </div>
+    <div class="card-body">
+       <p class="fw-bold fs-5 my-2">Past comments:</p>
+        @foreach (var comment in Model.Comments)
+        {
+            <p>
+                <a asp-controller="Users" asp-action="ToCourse"
+                asp-route-id="@comment.CourseCode">@comment.CourseCode:</a> @comment.Text
+            </p>
+        }
+    </div>
+</div>
