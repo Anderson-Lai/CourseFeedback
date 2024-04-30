@@ -73,7 +73,7 @@
 
                     <div class="d-flex justify-content-end">
                         <a asp-controller="Courses" asp-action="Add" asp-route-id="@Model.CourseCode"
-                           class="btn btn-primary m-2">
+                           class="btn btn-primary mx-2">
                             Add a comment
                         </a>
                     </div>
@@ -106,21 +106,29 @@
                             </p>
                             @if (comment.Edited)
                             {
-                                <p class="card-body m-0 px-0">(Edited)</p>
+                                <p class="card-body m-0 px-0">
+                                    (Edited) @comment.TimeEdited</p>
                             }
                         </div>
 
                         <p class="card-body m-0">@comment.Text</p>
 
-                        <div class="d-flex justify-content-end">
-                            <a asp-controller="Courses" asp-action="Edit" asp-route-id="@comment.Id"
-                               class="btn btn-primary my-2">
-                                Edit
-                            </a>
-                            <a asp-controller="Courses" asp-action="Delete" asp-route-id="@comment.Id"
-                               class="btn btn-danger m-2">
-                                Delete
-                            </a>
+                        <div class="row">
+                            <div class="col-md-6 d-flex align-items-center">
+                                <a class="card-body m-0" asp-controller="Comments"
+                                asp-action="Index" asp-route-id="@comment.Id">
+                                    Reply</a>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-end align-items-center">
+                                <a asp-controller="Courses" asp-action="Edit" asp-route-id="@comment.Id"
+                                   class="btn btn-primary my-2">
+                                    Edit
+                                </a>
+                                <a asp-controller="Courses" asp-action="Delete" asp-route-id="@comment.Id"
+                                   class="btn btn-danger m-2">
+                                    Delete
+                                </a>
+                            </div>
                         </div>
 
                     </div>

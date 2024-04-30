@@ -23,6 +23,10 @@ namespace CourseFeedback.Models
 
         public bool Edited { get; set; } = false;
 
+        public DateTime TimeEdited { get; set; }
+
+        public ICollection<Comments> Replies { get; set; }
+
         public Courses Courses { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
