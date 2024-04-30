@@ -25,7 +25,7 @@ namespace CourseFeedback.Models
 
         public DateTime TimeEdited { get; set; }
 
-        public ICollection<Comments> Replies { get; set; }
+        public ICollection<Replies> Replies { get; set; }
 
         public Courses Courses { get; set; }
 
