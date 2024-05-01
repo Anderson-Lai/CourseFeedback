@@ -1,0 +1,43 @@
+﻿@using CourseFeedback.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Replies
+@inject UserManager<ApplicationUser> userManager
+
+@{
+    var user = await userManager.GetUserAsync(User);
+}
+
+@if(user.Id == Model.UserId || user.Email == "admin@ycdsbk12.ca")
+{
+    <div>
+        <form method="post">
+            <div class="d-flex flex-column">
+                <label>Edit your comment:</label>
+                <textarea asp-for="Text">@Model.Text</textarea>
+                <button type="submit" class="btn btn-primary my-3" style="width: 25%"
+                        asp-controller="Comments" asp-action="EditReply" asp-route-id="@Model.Id">
+                    Edit
+                </button>
+                <a class="btn btn-danger" style="width: 25%" asp-controller="Comments"
+                asp-action="DeleteReply" asp-route-id="@Model.Id">Delete</a>
+            </div>
+        </form>
+    </div>
+}
+else
+{
+    <h3>
+        You do not have permission to edit this comment.
+        Please use the account that posted this comment to gain access.
+    </h3>
+    <a asp-controller="Comments" asp-action="HandleEditError" asp-route-id="@Model.CommentId"
+       class="fs-3">
+        Go back
+    </a>
+}
