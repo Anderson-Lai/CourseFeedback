@@ -57,7 +57,28 @@
 
     @foreach(var reply in Model.Replies)
     {
+        var replyUser = await userManager.FindByIdAsync(reply.UserId);
+
         <div class="col-md-12 m-2 border border-dark text-start">
+            <div class="d-flex">
+                <p class="card-body m-0" style="max-width: fit-content">
+                    Comment by:
+                    <a class="m-0 p-0" asp-controller="Users"
+                       asp-action="Index" asp-route-id="@reply.Id">
+                        @replyUser.FirstName @replyUser.MiddleName
+                        @replyUser.LastName @reply.TimeCreated
+                    </a>
+                </p>
+                @if (reply.Edited)
+                {
+                    <p class="card-body m-0 px-0">
+                        (Edited) @reply.TimeEdited
+                    </p>
+                }
+            </div>
+
+            <p class="card-body m-0">@reply.Text</p>
+
         </div>
     }
 </div>

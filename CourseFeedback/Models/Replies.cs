@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using CourseFeedback.Areas.Identity.Data;
 
 namespace CourseFeedback.Models
 {
@@ -15,6 +16,9 @@ namespace CourseFeedback.Models
 
         [ForeignKey(nameof(Comments))]
         public Guid CommentId { get; set; }
+
+        [ForeignKey(nameof(ApplicationUser))]
+        public string UserId { get; set; } = string.Empty;
 
         public bool Edited { get; set; } = false;
 

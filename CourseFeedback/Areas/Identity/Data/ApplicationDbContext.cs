@@ -15,6 +15,7 @@ namespace CourseFeedback.Data
 
         public DbSet<Courses> Courses { get; set; }
         public DbSet<Comments> Comments { get; set; }
+        public DbSet<Replies> Replies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
