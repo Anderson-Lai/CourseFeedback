@@ -15,29 +15,35 @@
 
 @if(user.Id == Model.UserId || user.Email == "admin@ycdsbk12.ca")
 {
-    <div>
-        <form method="post">
-            <div class="d-flex flex-column">
-                <label>Edit your comment:</label>
-                <textarea asp-for="Text">@Model.Text</textarea>
-                <button type="submit" class="btn btn-primary my-3" style="width: 25%"
+    <form method="post">
+        <div class="d-flex flex-column">
+            <label>Edit your reply:</label>
+            <textarea asp-for="Text">@Model.Text</textarea>
+
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary my-3 mx-2" style="width: 25%"
                         asp-controller="Comments" asp-action="EditReply" asp-route-id="@Model.Id">
                     Edit
                 </button>
-                <a class="btn btn-danger" style="width: 25%" asp-controller="Comments"
-                asp-action="DeleteReply" asp-route-id="@Model.Id">Delete</a>
-            </div>
-        </form>
-    </div>
+                <a class="btn btn-danger my-3" style="width: 25%" asp-controller="Comments"
+                    asp-action="DeleteReply" asp-route-id="@Model.Id" id="delete">Delete</a>
+            </div>  
+        </div>
+    </form>
 }
 else
 {
     <h3>
-        You do not have permission to edit this comment.
-        Please use the account that posted this comment to gain access.
+        You do not have permission to edit this reply.
+        Please use the account that posted this reply to gain access.
     </h3>
     <a asp-controller="Comments" asp-action="HandleEditError" asp-route-id="@Model.CommentId"
        class="fs-3">
         Go back
     </a>
 }
+
+<script>
+    // temporary
+    document.getElementById("delete").onclick = () => window.alert("Are you sure?")
+</script>
