@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CourseFeedback.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240430195250_user-reply relationship")]
-    partial class userreplyrelationship
+    [Migration("20240501011926_updating to replies branch")]
+    partial class updatingtorepliesbranch
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
