@@ -12,8 +12,13 @@
 
 @{
     var user = await userManager.GetUserAsync(User);
-    // var userRoles = await userManager.GetRolesAsync(user);
+
+    ViewBag.User = user;
+    ViewBag.Model = "Comments";
 }
+
+@* <partial name="~/Views/_DisplayEditPage.cshtml" model="@Model" /> *@
+
 
 @if (user.Id == Model.UserId || user.Email == "admin@ycdsbk12.ca")
 {

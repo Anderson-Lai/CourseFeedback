@@ -90,45 +90,18 @@
             }
             else
             {
+                ViewBag.RerouteToController = "Courses";
+                ViewBag.ControllerUser = "Courses";
+                ViewBag.IsCommentOrReply = "Comment";
+
                 @foreach (var comment in Model.Comments)
                 {
                     var user = await userManager.FindByIdAsync(comment.UserId);
 
-                    <div class="col-md-12 m-2 border border-dark text-start">
-                        <div class="d-flex">
-                            <p class="card-body m-0" style="max-width: fit-content">
-                                Comment by:
-                                <a class="m-0 p-0" asp-controller="Users"
-                                   asp-action="Index" asp-route-id="@user.Id">
-                                    @user.FirstName @user.MiddleName
-                                    @user.LastName @comment.TimeCreated
-                                </a>
-                            </p>
-                            @if (comment.Edited)
-                            {
-                                <p class="card-body m-0 px-0">
-                                    (Edited) @comment.TimeEdited</p>
-                            }
-                        </div>
+                    ViewBag.User = user;
+                    ViewBag.Model = comment;
 
-                        <p class="card-body m-0">@comment.Text</p>
-
-                        <div class="row">
-                            <div class="col-md-6 d-flex align-items-center">
-                                <a class="card-body m-0" asp-controller="Comments"
-                                asp-action="Index" asp-route-id="@comment.Id">
-                                    View replies
-                                </a>
-                            </div>
-                            <div class="col-md-6 d-flex justify-content-end align-items-center">
-                                <a asp-controller="Courses" asp-action="Edit" asp-route-id="@comment.Id"
-                                   class="btn btn-primary m-2">
-                                    Edit
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
+                    <partial name="~/Views/_DisplayReplies.cshtml" />
                 }
             }
         </div>

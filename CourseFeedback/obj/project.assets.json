@@ -8255,11 +8255,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ander\\source\\repos\\CourseFeedback\\CourseFeedback\\CourseFeedback.csproj",
+      "projectUniqueName": "C:\\Users\\ander\\Source\\Repos\\Anderson-Lai\\CourseFeedback\\CourseFeedback\\CourseFeedback.csproj",
       "projectName": "CourseFeedback",
-      "projectPath": "C:\\Users\\ander\\source\\repos\\CourseFeedback\\CourseFeedback\\CourseFeedback.csproj",
+      "projectPath": "C:\\Users\\ander\\Source\\Repos\\Anderson-Lai\\CourseFeedback\\CourseFeedback\\CourseFeedback.csproj",
       "packagesPath": "C:\\Users\\ander\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ander\\source\\repos\\CourseFeedback\\CourseFeedback\\obj\\",
+      "outputPath": "C:\\Users\\ander\\Source\\Repos\\Anderson-Lai\\CourseFeedback\\CourseFeedback\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ander\\AppData\\Roaming\\NuGet\\NuGet.Config",

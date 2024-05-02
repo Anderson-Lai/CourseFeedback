@@ -11,7 +11,15 @@
 
 @{
     var user = await userManager.GetUserAsync(User);
+
+    ViewBag.User = user;
+    ViewBag.Model = "Replies";
 }
+
+@{
+    // throwing an error right now (wrong model)
+}
+@* <partial name="~/Views/_DisplayEditPage.cshtml" model="@Model" /> *@
 
 @if(user.Id == Model.UserId || user.Email == "admin@ycdsbk12.ca")
 {

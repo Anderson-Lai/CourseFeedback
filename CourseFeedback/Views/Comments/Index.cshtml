@@ -11,77 +11,30 @@
 
 @{
     var user = await userManager.FindByIdAsync(Model.UserId);
+
+    ViewBag.User = user;
+    ViewBag.ControllerUser = "FirstComments";
+    ViewBag.RerouteToController = "Courses";
+    ViewBag.Model = Model;
+    ViewBag.IsCommentOrReply = "Comment";
 }
 
 <div class="d-flex flex-column">
-    <div class="col-md-12 m-2 border border-dark text-start">
-        <div class="d-flex">
-            <p class="card-body m-0" style="max-width: fit-content">
-                Comment by:
-                <a class="m-0 p-0" asp-controller="Users"
-                   asp-action="Index" asp-route-id="@user.Id">
-                    @user.FirstName @user.MiddleName
-                    @user.LastName @Model.TimeCreated
-                </a>
-            </p>
-            @if (Model.Edited)
-            {
-                <p class="card-body m-0 px-0">
-                    (Edited) @Model.TimeEdited
-                </p>
-            }
-        </div>
+    <partial name="~/Views/_DisplayReplies.cshtml" />
 
-        <p class="card-body m-0">@Model.Text</p>
-
-        <div class="row">
-            <div class="col-md-6 d-flex align-items-center">
-                <a class="card-body m-0" asp-controller="Comments"
-                   asp-action="Add" asp-route-id="@Model.Id">
-                    Add a reply
-                </a>
-            </div>
-            <div class="col-md-6 d-flex justify-content-end align-items-center">
-                <a asp-controller="Courses" asp-action="Edit" asp-route-id="@Model.Id"
-                   class="btn btn-primary m-2">
-                    Edit
-                </a>
-            </div>
-        </div>
-
-    </div>
+    @{
+        ViewBag.RerouteToController = "Comments";
+        ViewBag.ControllerUser = "Comments";
+        ViewBag.IsCommentOrReply = "Reply";
+    }
 
     @foreach(var reply in Model.Replies)
     {
         var replyUser = await userManager.FindByIdAsync(reply.UserId);
 
-        <div class="col-md-12 m-2 border border-dark text-start">
-            <div class="d-flex">
-                <p class="card-body m-0" style="max-width: fit-content">
-                    Comment by:
-                    <a class="m-0 p-0" asp-controller="Users"
-                       asp-action="Index" asp-route-id="@reply.UserId">
-                        @replyUser.FirstName @replyUser.MiddleName
-                        @replyUser.LastName @reply.TimeCreated
-                    </a>
-                </p>
-                @if (reply.Edited)
-                {
-                    <p class="card-body m-0 px-0">
-                        (Edited) @reply.TimeEdited
-                    </p>
-                }
-            </div>
+        ViewBag.User = replyUser;
+        ViewBag.Model = reply;
 
-            <p class="card-body m-0">@reply.Text</p>
-
-            <div class="container-fluid d-flex justify-content-end p-0">
-                <a asp-controller="Comments" asp-action="Edit" asp-route-id="@reply.Id"
-                    class="btn btn-primary m-2">
-                    Edit
-                </a>
-            </div>
-
-        </div>
+        <partial name="~/Views/_DisplayReplies.cshtml" />
     }
 </div>
