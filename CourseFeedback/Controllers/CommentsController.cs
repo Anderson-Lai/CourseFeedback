@@ -33,13 +33,13 @@ namespace CourseFeedback.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult Reply()
+        public IActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Reply(string id, Replies reply)
+        public async Task<IActionResult> Add(string id, Replies reply)
         {
             var guid = new Guid(id);
             var user = await userManager.GetUserAsync(User);
@@ -60,7 +60,7 @@ namespace CourseFeedback.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> EditReply(string id)
+        public async Task<IActionResult> Edit(string id)
         {
             var guid = new Guid(id);
 
@@ -86,7 +86,7 @@ namespace CourseFeedback.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditReply(string id, Replies reply)
+        public async Task<IActionResult> Edit(string id, Replies reply)
         {
             var guid = new Guid(id);
 
@@ -102,7 +102,7 @@ namespace CourseFeedback.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> DeleteReply(string id)
+        public async Task<IActionResult> Delete(string id)
         {
             var guid = new Guid(id);
 

@@ -113,7 +113,7 @@ namespace CourseFeedback.Areas.Identity.Pages.Account
             public string LastName { get; set; }
 
             [Required]
-            [GraduatingYearValidation]
+            [CustomGraduatingYearValidation]
             public int GraduatingYear { get; set; }
 
 

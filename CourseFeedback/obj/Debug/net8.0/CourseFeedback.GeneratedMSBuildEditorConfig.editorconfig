@@ -50,16 +50,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ander/source/repos/CourseFeedback/CourseFeedback/Views/Comments/EditReply.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcRWRpdFJlcGx5LmNzaHRtbA==
+[C:/Users/ander/source/repos/CourseFeedback/CourseFeedback/Views/Comments/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ander/source/repos/CourseFeedback/CourseFeedback/Views/Comments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ander/source/repos/CourseFeedback/CourseFeedback/Views/Comments/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ander/source/repos/CourseFeedback/CourseFeedback/Views/Comments/Reply.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcUmVwbHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ander/source/repos/CourseFeedback/CourseFeedback/Views/Courses/Add.cshtml]

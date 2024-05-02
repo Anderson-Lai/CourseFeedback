@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-md-6 d-flex align-items-center">
                 <a class="card-body m-0" asp-controller="Comments"
-                   asp-action="Reply" asp-route-id="@Model.Id">
+                   asp-action="Add" asp-route-id="@Model.Id">
                     Add a reply
                 </a>
             </div>
@@ -76,7 +76,7 @@
             <p class="card-body m-0">@reply.Text</p>
 
             <div class="container-fluid d-flex justify-content-end p-0">
-                <a asp-controller="Comments" asp-action="EditReply" asp-route-id="@reply.Id"
+                <a asp-controller="Comments" asp-action="Edit" asp-route-id="@reply.Id"
                     class="btn btn-primary m-2">
                     Edit
                 </a>
