@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AyHYRNQErN12ucWoXIdpF0op+TaPt5SNh+al4q6Dw3PolwhQEMXp7f7CrgY2+dXO9pSl8mlydTpM1ZNhGjHLmw==",
+  "dgSpecHash": "ZKsDtFHb4XoIy+R7NTfxBXbKE2JGu2r+U/dwyiNY5LCJmlKyLrONLc+bG1qEDcLc6Ev6t42zfIT7BMdQtLmuMA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ander\\Source\\Repos\\Anderson-Lai\\CourseFeedback\\CourseFeedback\\CourseFeedback.csproj",
+  "projectFilePath": "C:\\Users\\ander\\source\\repos\\CourseFeedback\\CourseFeedback\\CourseFeedback.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ander\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\ander\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

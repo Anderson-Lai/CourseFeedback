@@ -66,7 +66,13 @@ namespace CourseFeedback.Controllers
 
             var result = await dbContext.Replies.FindAsync(guid);
 
+            if(result is null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View(result);
+            
         }
 
         [HttpGet]
@@ -100,21 +106,14 @@ namespace CourseFeedback.Controllers
         {
             var guid = new Guid(id);
 
-            try
-            {
-                var result = await dbContext.Replies.AsNoTracking().
-                    FirstOrDefaultAsync(c => c.Id == guid);
+            var result = await dbContext.Replies.AsNoTracking().
+                FirstOrDefaultAsync(c => c.Id == guid);
 
-                dbContext.Replies.Remove(result);
-                await dbContext.SaveChangesAsync();
+            dbContext.Replies.Remove(result);
+            await dbContext.SaveChangesAsync();
 
-                return RedirectToAction("Index", "Comments", new {id = result.CommentId});
+            return RedirectToAction("Index", "Comments", new {id = result.CommentId});
 
-            }
-            catch (NullReferenceException)
-            {
-                return RedirectToAction("Index", "Home");
-            }
         }
     }
 }

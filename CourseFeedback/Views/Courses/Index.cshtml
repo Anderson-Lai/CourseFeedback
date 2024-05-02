@@ -27,7 +27,7 @@
     else
     {
         <div class="card">
-            <div class="card-body">
+            <div class="card-body pb-0">
                 <h5 class="card-title">@Model.CourseName @Model.CourseCode</h5>
                 <div class="row my-3">
 
@@ -73,7 +73,7 @@
 
                     <div class="d-flex justify-content-end">
                         <a asp-controller="Courses" asp-action="Add" asp-route-id="@Model.CourseCode"
-                           class="btn btn-primary mx-2">
+                           class="btn btn-primary mx-1">
                             Add a comment
                         </a>
                     </div>
@@ -117,7 +117,8 @@
                             <div class="col-md-6 d-flex align-items-center">
                                 <a class="card-body m-0" asp-controller="Comments"
                                 asp-action="Index" asp-route-id="@comment.Id">
-                                    Reply</a>
+                                    View replies
+                                </a>
                             </div>
                             <div class="col-md-6 d-flex justify-content-end align-items-center">
                                 <a asp-controller="Courses" asp-action="Edit" asp-route-id="@comment.Id"

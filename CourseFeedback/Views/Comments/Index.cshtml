@@ -36,9 +36,9 @@
 
         <div class="row">
             <div class="col-md-6 d-flex align-items-center">
-                <a class="btn btn-primary m-2" asp-controller="Comments"
+                <a class="card-body m-0" asp-controller="Comments"
                    asp-action="Reply" asp-route-id="@Model.Id">
-                    Reply
+                    Add a reply
                 </a>
             </div>
             <div class="col-md-6 d-flex justify-content-end align-items-center">
@@ -64,7 +64,7 @@
                 <p class="card-body m-0" style="max-width: fit-content">
                     Comment by:
                     <a class="m-0 p-0" asp-controller="Users"
-                       asp-action="Index" asp-route-id="@reply.Id">
+                       asp-action="Index" asp-route-id="@reply.UserId">
                         @replyUser.FirstName @replyUser.MiddleName
                         @replyUser.LastName @reply.TimeCreated
                     </a>
