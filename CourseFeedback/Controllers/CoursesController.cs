@@ -76,6 +76,11 @@ namespace CourseFeedback.Controllers
             // typecast to Guid as Comments.Id is of type Guid and not string / int
 
             var comment = await dbContext.Comments.FindAsync(guid);
+
+            if(comment is null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             
             return View(comment);
         }
@@ -119,47 +124,57 @@ namespace CourseFeedback.Controllers
         [Authorize]
         public async Task<IActionResult> Delete(string id)
         {
+
             var guid = new Guid(id);
 
-            var course = await dbContext.Comments.FindAsync(guid);
+            var result = await dbContext.Comments.AsNoTracking().
+                FirstOrDefaultAsync(c => c.Id == guid);
 
-            return View(course);
-        }
+            dbContext.Comments.Remove(result);
+            await dbContext.SaveChangesAsync();
 
-        [HttpPost]
-        public IActionResult HandleDeleteError(string id)
-        {
             var course = new Courses
             {
-                CourseCode = id,
+                CourseCode = result.CourseCode,
             };
 
             return RedirectToAction("Index", "Courses", course);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> HandleDelete(string id)
-        {
-            var guid = new Guid(id);
+        //[HttpPost]
+        //public IActionResult HandleDeleteError(string id)
+        //{
+        //    var course = new Courses
+        //    {
+        //        CourseCode = id,
+        //    };
 
-            var comment = dbContext.Comments.AsNoTracking().FirstOrDefault(c => c.Id == guid);
+        //    return RedirectToAction("Index", "Courses", course);
+        //}
 
-            try
-            {
-                var course = new Courses
-                {
-                    CourseCode = comment.CourseCode,
-                };
+        //[HttpGet]
+        //public async Task<IActionResult> HandleDelete(string id)
+        //{
+        //    var guid = new Guid(id);
 
-                dbContext.Comments.Remove(comment);
-                await dbContext.SaveChangesAsync();
+        //    var comment = dbContext.Comments.AsNoTracking().FirstOrDefault(c => c.Id == guid);
 
-                return RedirectToAction("Index", "Courses", course);
-            }
-            catch (NullReferenceException)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
+        //    try
+        //    {
+        //        var course = new Courses
+        //        {
+        //            CourseCode = comment.CourseCode,
+        //        };
+
+        //        dbContext.Comments.Remove(comment);
+        //        await dbContext.SaveChangesAsync();
+
+        //        return RedirectToAction("Index", "Courses", course);
+        //    }
+        //    catch (NullReferenceException)
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
+        //}
     }
 }

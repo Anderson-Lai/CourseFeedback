@@ -84,7 +84,7 @@
 
         <div class="d-flex flex-column align-items-center col-md-12">
             <h4 class="m-3">Comments</h4>
-            @if (Model.Comments is null)
+            @if (!Model.Comments.Any())
             {
                 <p>Create the first comment!</p>
             }
@@ -122,12 +122,8 @@
                             </div>
                             <div class="col-md-6 d-flex justify-content-end align-items-center">
                                 <a asp-controller="Courses" asp-action="Edit" asp-route-id="@comment.Id"
-                                   class="btn btn-primary my-2">
+                                   class="btn btn-primary m-2">
                                     Edit
-                                </a>
-                                <a asp-controller="Courses" asp-action="Delete" asp-route-id="@comment.Id"
-                                   class="btn btn-danger m-2">
-                                    Delete
                                 </a>
                             </div>
                         </div>
