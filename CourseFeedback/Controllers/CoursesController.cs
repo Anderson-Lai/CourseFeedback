@@ -49,7 +49,7 @@ namespace CourseFeedback.Controllers
 
             var temp = new Comments
             {
-                Text = comment.Text,
+                Text = comment.Text ?? string.Empty,
                 TimeCreated = DateTime.Now,
                 CourseCode = id,
                 UserId = user.Id,
@@ -106,7 +106,7 @@ namespace CourseFeedback.Controllers
 
             var sysComment = await dbContext.Comments.FindAsync(guId);
 
-            sysComment.Text = comment.Text;
+            sysComment.Text = comment.Text ?? string.Empty;
             sysComment.TimeEdited = DateTime.Now;
             sysComment.Edited = true;
 
@@ -140,41 +140,5 @@ namespace CourseFeedback.Controllers
 
             return RedirectToAction("Index", "Courses", course);
         }
-
-        //[HttpPost]
-        //public IActionResult HandleDeleteError(string id)
-        //{
-        //    var course = new Courses
-        //    {
-        //        CourseCode = id,
-        //    };
-
-        //    return RedirectToAction("Index", "Courses", course);
-        //}
-
-        //[HttpGet]
-        //public async Task<IActionResult> HandleDelete(string id)
-        //{
-        //    var guid = new Guid(id);
-
-        //    var comment = dbContext.Comments.AsNoTracking().FirstOrDefault(c => c.Id == guid);
-
-        //    try
-        //    {
-        //        var course = new Courses
-        //        {
-        //            CourseCode = comment.CourseCode,
-        //        };
-
-        //        dbContext.Comments.Remove(comment);
-        //        await dbContext.SaveChangesAsync();
-
-        //        return RedirectToAction("Index", "Courses", course);
-        //    }
-        //    catch (NullReferenceException)
-        //    {
-        //        return RedirectToAction("Index", "Home");
-        //    }
-        //}
     }
 }

@@ -20,7 +20,7 @@
 }
 
 <div class="d-flex flex-column">
-    <partial name="~/Views/_DisplayReplies.cshtml" />
+    <partial name="~/Views/Shared/_DisplayReplies.cshtml" />
 
     @{
         ViewBag.RerouteToController = "Comments";
@@ -35,6 +35,6 @@
         ViewBag.User = replyUser;
         ViewBag.Model = reply;
 
-        <partial name="~/Views/_DisplayReplies.cshtml" />
+        <partial name="~/Views/Shared/_DisplayReplies.cshtml" />
     }
 </div>

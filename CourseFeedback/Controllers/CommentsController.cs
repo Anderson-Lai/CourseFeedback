@@ -46,7 +46,7 @@ namespace CourseFeedback.Controllers
 
             var newReply = new Replies
             {
-                Text = reply.Text,
+                Text = reply.Text ?? string.Empty,
                 TimeCreated = DateTime.Now,
                 CommentId = guid,
                 UserId = user.Id,
@@ -92,7 +92,7 @@ namespace CourseFeedback.Controllers
 
             var result = await dbContext.Replies.FindAsync(guid);
 
-            result.Text = reply.Text;
+            result.Text = reply.Text ?? string.Empty;
             result.TimeEdited = DateTime.Now;
             result.Edited = true;
 

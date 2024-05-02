@@ -17,13 +17,13 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CourseFeedback
 build_property.RootNamespace = CourseFeedback
-build_property.ProjectDir = C:\Users\ander\Source\Repos\Anderson-Lai\CourseFeedback\CourseFeedback\
+build_property.ProjectDir = C:\Users\ander\source\repos\Anderson-Lai\CourseFeedback\CourseFeedback\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\ander\Source\Repos\Anderson-Lai\CourseFeedback\CourseFeedback
+build_property.MSBuildProjectDirectory = C:\Users\ander\source\repos\Anderson-Lai\CourseFeedback\CourseFeedback
 build_property._RazorSourceGeneratorDebug = 
 
 [C:/Users/ander/Source/Repos/Anderson-Lai/CourseFeedback/CourseFeedback/Areas/Identity/Pages/Account/Login.cshtml]
@@ -90,6 +90,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ander/Source/Repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/Shared/_DisplayEditPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EaXNwbGF5RWRpdFBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ander/Source/Repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/Shared/_DisplayReplies.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EaXNwbGF5UmVwbGllcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ander/Source/Repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -100,14 +108,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ander/Source/Repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ander/Source/Repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/_DisplayEditPage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0Rpc3BsYXlFZGl0UGFnZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ander/Source/Repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/_DisplayReplies.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0Rpc3BsYXlSZXBsaWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ander/Source/Repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/_ViewImports.cshtml]
