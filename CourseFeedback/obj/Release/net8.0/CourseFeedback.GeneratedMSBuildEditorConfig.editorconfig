@@ -90,8 +90,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ander/source/repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/Shared/_DisplayEditPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EaXNwbGF5RWRpdFBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ander/source/repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/Shared/_DisplayReplies.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EaXNwbGF5UmVwbGllcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ander/source/repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/Shared/_FindCourse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9GaW5kQ291cnNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ander/source/repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/Shared/_LoginPartial.cshtml]
@@ -104,10 +112,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ander/source/repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ander/source/repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/_DisplayEditPage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0Rpc3BsYXlFZGl0UGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ander/source/repos/Anderson-Lai/CourseFeedback/CourseFeedback/Views/_ViewImports.cshtml]

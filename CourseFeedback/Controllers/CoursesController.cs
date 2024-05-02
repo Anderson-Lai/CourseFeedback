@@ -20,7 +20,6 @@ namespace CourseFeedback.Controllers
         }
 
         [HttpGet]
-        [HttpPost]
         public async Task<IActionResult> Index(Courses course)
         {
             var result = await dbContext.Courses.Include(c => c.Comments)
@@ -68,8 +67,7 @@ namespace CourseFeedback.Controllers
 
         [HttpGet]
         [Authorize]
-        // id is from Index.cshtml
-        // asp-route-id is set to @Model.CourseCode where @model Courses
+        // id is from asp-route-id
         public async Task<IActionResult> Edit(string id)
         {
             var guid = new Guid(id); 
@@ -86,8 +84,6 @@ namespace CourseFeedback.Controllers
         }
 
         [HttpGet]
-        // works bc asp-route-id is set to @Model.CourseCode
-        // @model Comments
         public IActionResult HandleEditError(string id)
             // make sure parameter name is "id" when using asp-route-id
         {

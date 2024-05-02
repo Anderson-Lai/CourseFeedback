@@ -12,13 +12,7 @@
 
 <div class="d-flex flex-column align-items-center text-center">
 
-    <form method="post" style="width: 100%">
-        <div class="d-flex justify-content-center mb-4">
-            <label>Find your courses:</label>&nbsp;
-            <input asp-controller="Courses" asp-action="Index" asp-for="@Model.CourseCode" placeholder="e.g. ICS3U1"
-                   class="mx-2" style="height: 85%" />
-        </div>
-    </form>
+    <partial name="~/Views/Shared/_FindCourse.cshtml" />
 
     @if (Model is null)
     {
