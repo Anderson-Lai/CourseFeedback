@@ -33,7 +33,7 @@
                         Edit
                     </button>
                     <a class="btn btn-danger m-2 my-3 px-3 fs-5" style="width: fit-content"
-                       asp-controller="Courses" asp-action="Delete" asp-route-id="@Model.Id">
+                       asp-controller="Courses" asp-action="Delete" asp-route-id="@Model.Id" id="delete">
                         Delete
                     </a>
                 </div>
@@ -52,3 +52,8 @@ else
         Go back
     </a>
 }
+
+<script>
+    // temporary
+    document.getElementById("delete").onclick = () => window.alert("Are you sure?")
+</script>

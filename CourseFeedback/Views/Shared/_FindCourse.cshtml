@@ -6,10 +6,10 @@
 
 @model Courses
 
-<form method="post" style="width: 100%">
+<form method="post" style="width: 100%" asp-controller="Home" asp-action="Index">
     <div class="d-flex justify-content-center mb-4">
         <label>Find your courses:</label>
-        <input asp-controller="Home" asp-action="Index" asp-for="@Model.CourseCode"
+        <input asp-for="@Model.CourseCode"
         placeholder="e.g. ICS3U1" class="mx-2" style="height: 80%; width: 20%" />
     </div>
 </form>

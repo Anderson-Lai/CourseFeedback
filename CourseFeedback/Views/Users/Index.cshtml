@@ -6,6 +6,9 @@
 }
 
 @model ApplicationUser
+@inject ICourses course
+
+<partial name="~/Views/Shared/_FindCourse.cshtml" model="course" />
 
 <div class="card">
     <div class="card-header">

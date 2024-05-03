@@ -22,6 +22,8 @@ namespace CourseFeedback.Models
 
         public bool Edited { get; set; } = false;
 
+        //public ICollection<Replies> Reply { get; set; }
+
         public DateTime TimeEdited { get; set; }
 
         public Comments Comments { get; set; }

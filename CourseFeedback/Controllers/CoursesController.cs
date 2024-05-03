@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace CourseFeedback.Controllers
 {
@@ -23,11 +24,11 @@ namespace CourseFeedback.Controllers
         public async Task<IActionResult> Index(Courses course)
         {
             var result = await dbContext.Courses.Include(c => c.Comments)
+                //.OrderBy(c => c.Comments)
                 .FirstOrDefaultAsync(c => c.CourseCode == course.CourseCode);
                 
             // Include tells path for EF core
-            // firstordefault => finds first course whose id matches
-            // first "(class)Course's coursecode which mathces
+            // firstordefault => finds first course whose CourseCode matches
             // the function parameter's coursecode
 
             return View(result);

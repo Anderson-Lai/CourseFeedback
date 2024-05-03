@@ -2,7 +2,21 @@
 
 namespace CourseFeedback.Models
 {
-    public class Courses
+    public interface ICourses
+    {
+        ICollection<Comments> Comments { get; set; }
+        List<string> Corequisites { get; set; }
+        string CourseCode { get; set; }
+        string CourseName { get; set; }
+        int CreditNumber { get; set; }
+        string Description { get; set; }
+        bool ELearning { get; set; }
+        string GuidanceMessage { get; set; }
+        string Openness { get; set; }
+        List<string> Prerequisites { get; set; }
+    }
+
+    public class Courses : ICourses
     {
         [Key]
         public string CourseCode { get; set; } = string.Empty;

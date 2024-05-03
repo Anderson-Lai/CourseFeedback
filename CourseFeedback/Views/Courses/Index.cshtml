@@ -1,4 +1,5 @@
 ﻿@using CourseFeedback.Areas.Identity.Data
+@using CourseFeedback.Data
 @using Microsoft.AspNetCore.Identity
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -8,6 +9,7 @@
 
 @model Courses
 @inject UserManager<ApplicationUser> userManager
+@inject ApplicationDbContext dbContext
 
 
 <div class="d-flex flex-column align-items-center text-center">
@@ -88,7 +90,10 @@
                 ViewBag.ControllerUser = "Courses";
                 ViewBag.IsCommentOrReply = "Comment";
 
-                @foreach (var comment in Model.Comments)
+                // null reference exception as the replies have not yet been loaded
+                var sortedComments = Model.Comments.OrderByDescending(c => c.NumberOfReplies);
+
+                @foreach (var comment in sortedComments) // was Model.Comments
                 {
                     var user = await userManager.FindByIdAsync(comment.UserId);
 

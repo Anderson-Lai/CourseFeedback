@@ -8,6 +8,7 @@
 
 @model Comments
 @inject UserManager<ApplicationUser> userManager
+@inject ICourses course
 
 @{
     var user = await userManager.FindByIdAsync(Model.UserId);
@@ -20,6 +21,8 @@
 }
 
 <div class="d-flex flex-column">
+    <partial name="~/Views/Shared/_FindCourse.cshtml" model="course"/>
+
     <partial name="~/Views/Shared/_DisplayReplies.cshtml" />
 
     @{

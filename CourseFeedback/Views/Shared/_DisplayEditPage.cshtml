@@ -5,20 +5,20 @@
 }
 
 @{
-    var user = ViewBag.User ?? string.Empty;
-    var viewModel = ViewBag.Model ?? string.Empty;
+    // var user = ViewBag.User ?? string.Empty;
+    // var viewModel = ViewBag.Model ?? string.Empty;
 
-    string rerouteBack = "Courses";
-    string routeId = "@Model.CourseCode";
+    // string rerouteBack = "Courses";
+    // string routeId = "@Model.CourseCode";
 
-    if(viewModel == "Replies")
-    {
-        rerouteBack = "Comments";
-        routeId = "@Model.CommentId";
-    }
+    // if(viewModel == "Replies")
+    // {
+    //     rerouteBack = "Comments";
+    //     routeId = "@Model.CommentId";
+    // }
 }
 
-@model dynamic
+@* @model dynamic *@
 
 @* @if (user.Id == Model.UserId || user.Email == "admin@ycdsbk12.ca")
 {

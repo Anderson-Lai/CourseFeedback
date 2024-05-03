@@ -52,6 +52,9 @@ namespace CourseFeedback.Controllers
                 UserId = user.Id,
             };
 
+            var associatedComment = await dbContext.Comments.FindAsync(guid);
+            associatedComment.NumberOfReplies++;
+
             await dbContext.Replies.AddAsync(newReply);
             await dbContext.SaveChangesAsync();
 
