@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CourseFeedback.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240429014247_edited value")]
-    partial class editedvalue
+    [Migration("20240430131039_replies")]
+    partial class replies
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -111,6 +111,9 @@ namespace CourseFeedback.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("CommentsId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("CourseCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -125,11 +128,16 @@ namespace CourseFeedback.Migrations
                     b.Property<DateTime>("TimeCreated")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("TimeEdited")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CommentsId");
 
                     b.HasIndex("CourseCode");
 
@@ -331,6 +339,10 @@ namespace CourseFeedback.Migrations
 
             modelBuilder.Entity("CourseFeedback.Models.Comments", b =>
                 {
+                    b.HasOne("CourseFeedback.Models.Comments", null)
+                        .WithMany("Replies")
+                        .HasForeignKey("CommentsId");
+
                     b.HasOne("CourseFeedback.Models.Courses", "Courses")
                         .WithMany("Comments")
                         .HasForeignKey("CourseCode")
@@ -402,6 +414,11 @@ namespace CourseFeedback.Migrations
             modelBuilder.Entity("CourseFeedback.Areas.Identity.Data.ApplicationUser", b =>
                 {
                     b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("CourseFeedback.Models.Comments", b =>
+                {
+                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("CourseFeedback.Models.Courses", b =>

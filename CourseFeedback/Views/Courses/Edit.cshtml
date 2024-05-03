@@ -12,8 +12,13 @@
 
 @{
     var user = await userManager.GetUserAsync(User);
-    // var userRoles = await userManager.GetRolesAsync(user);
+
+    ViewBag.User = user;
+    ViewBag.Model = "Comments";
 }
+
+@* <partial name="~/Views/_DisplayEditPage.cshtml" model="@Model" /> *@
+
 
 @if (user.Id == Model.UserId || user.Email == "admin@ycdsbk12.ca")
 {
@@ -22,8 +27,17 @@
             <div class="d-flex flex-column">
                 <label>Edit your comment:</label>
                 <textarea asp-for="Text">@Model.Text</textarea>
-                <button type="submit" class="btn btn-primary my-3" style="width: 25%"
-                asp-controller="Courses" asp-action="Edit" asp-route-id="@Model.Id">Edit</button>
+                <div class="d-flex">
+                    <button type="submit" class="btn btn-primary my-3 px-3 fs-5" style="width: fit-content"
+                            asp-controller="Courses" asp-action="Edit" asp-route-id="@Model.Id">
+                        Edit
+                    </button>
+                    <a class="btn btn-danger m-2 my-3 px-3 fs-5" style="width: fit-content"
+                       asp-controller="Courses" asp-action="Delete" asp-route-id="@Model.Id" id="delete">
+                        Delete
+                    </a>
+                </div>
+                
             </div>
         </form>
     </div>
@@ -38,3 +52,8 @@ else
         Go back
     </a>
 }
+
+<script>
+    // temporary
+    document.getElementById("delete").onclick = () => window.alert("Are you sure?")
+</script>

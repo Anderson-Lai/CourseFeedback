@@ -1,5 +1,6 @@
 using CourseFeedback.Areas.Identity.Data;
 using CourseFeedback.Data;
+using CourseFeedback.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,8 @@ namespace CourseFeedback
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
+
+            builder.Services.AddTransient<ICourses, Courses>();
 
             var app = builder.Build();
 
@@ -47,43 +50,9 @@ namespace CourseFeedback
 
             using (var scope = app.Services.CreateScope())
             {
-                var roleManager = scope.ServiceProvider.
-                    GetRequiredService<RoleManager<IdentityRole>>();
+                var serviceProvider = scope.ServiceProvider;
 
-                string[] roles = ["Admin", "User"];
-
-                foreach (var role in roles)
-                {
-                    if (!await roleManager.RoleExistsAsync(role))
-                    {
-                        await roleManager.CreateAsync(new IdentityRole(role));
-                    }
-                }
-            }
-
-            using (var scope = app.Services.CreateScope())
-            {
-                var userManager = scope.ServiceProvider.
-                    GetRequiredService<UserManager<ApplicationUser>>();
-
-                string email = "admin@ycdsbk12.ca";
-                string password = "!Test123";
-
-                if (await userManager.FindByEmailAsync(email) is null)
-                {
-                    var admin = new ApplicationUser
-                    {
-                        Email = email,
-                        FirstName = "admin",
-                        MiddleName = "admin",
-                        LastName = "admin",
-                        GraduatingYear = 2026,
-                    };
-
-                    await userManager.SetUserNameAsync(admin, email);
-                    await userManager.CreateAsync(admin, password);
-                    await userManager.AddToRoleAsync(admin, "Admin");
-                }
+                await SeedUserData.SeedRolesAndAdminAccount(serviceProvider);
             }
 
             app.Run();

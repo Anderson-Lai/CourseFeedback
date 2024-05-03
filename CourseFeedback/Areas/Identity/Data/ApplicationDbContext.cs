@@ -1,7 +1,9 @@
 ﻿using CourseFeedback.Areas.Identity.Data;
 using CourseFeedback.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 
 namespace CourseFeedback.Data
 {
@@ -15,6 +17,7 @@ namespace CourseFeedback.Data
 
         public DbSet<Courses> Courses { get; set; }
         public DbSet<Comments> Comments { get; set; }
+        public DbSet<Replies> Replies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

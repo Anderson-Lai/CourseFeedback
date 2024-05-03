@@ -6,11 +6,15 @@
 }
 
 @model ApplicationUser
+@inject ICourses course
+
+<partial name="~/Views/Shared/_FindCourse.cshtml" model="course" />
 
 <div class="card">
     <div class="card-header">
         <h3>@Model.FirstName @Model.MiddleName @Model.LastName</h3>
-        <h4 class="my-3">Class of @Model.GraduatingYear</h4>
+        <h4>@Model.Email</h4>
+        <h5 class="my-3">Class of @Model.GraduatingYear</h5>
         <hr />
     </div>
     <div class="card-body">
@@ -18,8 +22,8 @@
         @foreach (var comment in Model.Comments)
         {
             <p>
-                <a asp-controller="Users" asp-action="ToCourse"
-                asp-route-id="@comment.CourseCode">@comment.CourseCode:</a> @comment.Text
+                <a asp-controller="Comments" asp-action="Index"
+                asp-route-id="@comment.Id">@comment.CourseCode:</a> @comment.Text
             </p>
         }
     </div>

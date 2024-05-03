@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace CourseFeedback.Controllers
 {
@@ -20,15 +21,14 @@ namespace CourseFeedback.Controllers
         }
 
         [HttpGet]
-        [HttpPost]
         public async Task<IActionResult> Index(Courses course)
         {
             var result = await dbContext.Courses.Include(c => c.Comments)
+                //.OrderBy(c => c.Comments)
                 .FirstOrDefaultAsync(c => c.CourseCode == course.CourseCode);
                 
             // Include tells path for EF core
-            // firstordefault => finds first course whose id matches
-            // first "(class)Course's coursecode which mathces
+            // firstordefault => finds first course whose CourseCode matches
             // the function parameter's coursecode
 
             return View(result);
@@ -49,7 +49,7 @@ namespace CourseFeedback.Controllers
 
             var temp = new Comments
             {
-                Text = comment.Text,
+                Text = comment.Text ?? string.Empty,
                 TimeCreated = DateTime.Now,
                 CourseCode = id,
                 UserId = user.Id,
@@ -68,21 +68,23 @@ namespace CourseFeedback.Controllers
 
         [HttpGet]
         [Authorize]
-        // id is from Index.cshtml
-        // asp-route-id is set to @Model.CourseCode where @model Courses
+        // id is from asp-route-id
         public async Task<IActionResult> Edit(string id)
         {
             var guid = new Guid(id); 
             // typecast to Guid as Comments.Id is of type Guid and not string / int
 
             var comment = await dbContext.Comments.FindAsync(guid);
+
+            if(comment is null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             
             return View(comment);
         }
 
         [HttpGet]
-        // works bc asp-route-id is set to @Model.CourseCode
-        // @model Comments
         public IActionResult HandleEditError(string id)
             // make sure parameter name is "id" when using asp-route-id
         {
@@ -101,7 +103,8 @@ namespace CourseFeedback.Controllers
 
             var sysComment = await dbContext.Comments.FindAsync(guId);
 
-            sysComment.Text = comment.Text;
+            sysComment.Text = comment.Text ?? string.Empty;
+            sysComment.TimeEdited = DateTime.Now;
             sysComment.Edited = true;
 
             await dbContext.SaveChangesAsync();
@@ -118,47 +121,21 @@ namespace CourseFeedback.Controllers
         [Authorize]
         public async Task<IActionResult> Delete(string id)
         {
+
             var guid = new Guid(id);
 
-            var course = await dbContext.Comments.FindAsync(guid);
+            var result = await dbContext.Comments.AsNoTracking().
+                FirstOrDefaultAsync(c => c.Id == guid);
 
-            return View(course);
-        }
+            dbContext.Comments.Remove(result);
+            await dbContext.SaveChangesAsync();
 
-        [HttpPost]
-        public IActionResult HandleDeleteError(string id)
-        {
             var course = new Courses
             {
-                CourseCode = id,
+                CourseCode = result.CourseCode,
             };
 
             return RedirectToAction("Index", "Courses", course);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> HandleDelete(string id)
-        {
-            var guid = new Guid(id);
-
-            var comment = dbContext.Comments.AsNoTracking().FirstOrDefault(c => c.Id == guid);
-
-            try
-            {
-                var course = new Courses
-                {
-                    CourseCode = comment.CourseCode,
-                };
-
-                dbContext.Comments.Remove(comment);
-                await dbContext.SaveChangesAsync();
-
-                return RedirectToAction("Index", "Courses", course);
-            }
-            catch (NullReferenceException)
-            {
-                return RedirectToAction("Index", "Home");
-            }
         }
     }
 }

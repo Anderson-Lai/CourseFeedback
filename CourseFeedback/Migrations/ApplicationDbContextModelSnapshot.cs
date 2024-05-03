@@ -115,11 +115,17 @@ namespace CourseFeedback.Migrations
                     b.Property<bool>("Edited")
                         .HasColumnType("bit");
 
+                    b.Property<int>("NumberOfReplies")
+                        .HasColumnType("int");
+
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("TimeCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("TimeEdited")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
@@ -187,6 +193,39 @@ namespace CourseFeedback.Migrations
                             Openness = "University",
                             Prerequisites = "[\"AMU105\"]"
                         });
+                });
+
+            modelBuilder.Entity("CourseFeedback.Models.Replies", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CommentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Edited")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TimeCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("TimeEdited")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommentId");
+
+                    b.ToTable("Replies");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -345,6 +384,17 @@ namespace CourseFeedback.Migrations
                     b.Navigation("Courses");
                 });
 
+            modelBuilder.Entity("CourseFeedback.Models.Replies", b =>
+                {
+                    b.HasOne("CourseFeedback.Models.Comments", "Comments")
+                        .WithMany("Replies")
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Comments");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -399,6 +449,11 @@ namespace CourseFeedback.Migrations
             modelBuilder.Entity("CourseFeedback.Areas.Identity.Data.ApplicationUser", b =>
                 {
                     b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("CourseFeedback.Models.Comments", b =>
+                {
+                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("CourseFeedback.Models.Courses", b =>

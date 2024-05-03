@@ -1,0 +1,17 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Replies
+
+<div>
+    <form method="post">
+        <div class="d-flex flex-column">
+            <label>Write your reply:</label>
+            <textarea asp-for="Text"></textarea>
+            <button type="submit" class="btn btn-primary my-3" style="width: 25%">Post</button>
+        </div>
+    </form>
+</div>

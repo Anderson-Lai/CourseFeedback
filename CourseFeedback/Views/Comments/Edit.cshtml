@@ -1,0 +1,57 @@
+﻿@using CourseFeedback.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Replies
+@inject UserManager<ApplicationUser> userManager
+
+@{
+    var user = await userManager.GetUserAsync(User);
+
+    ViewBag.User = user;
+    ViewBag.Model = "Replies";
+}
+
+@{
+    // throwing an error right now (wrong model)
+}
+@* <partial name="~/Views/_DisplayEditPage.cshtml" model="@Model" /> *@
+
+@if(user.Id == Model.UserId || user.Email == "admin@ycdsbk12.ca")
+{
+    <form method="post">
+        <div class="d-flex flex-column">
+            <label>Edit your reply:</label>
+            <textarea asp-for="Text">@Model.Text</textarea>
+
+            <div class="d-flex">
+                <button type="submit" class="btn btn-primary my-3 px-3 fs-5" style="width: fit-content"
+                        asp-controller="Comments" asp-action="Edit" asp-route-id="@Model.Id">
+                    Edit
+                </button>
+                <a class="btn btn-danger m-2 my-3 px-3 fs-5" style="width: fit-content" asp-controller="Comments"
+                    asp-action="Delete" asp-route-id="@Model.Id" id="delete">Delete</a>
+            </div>  
+        </div>
+    </form>
+}
+else
+{
+    <h3>
+        You do not have permission to edit this reply.
+        Please use the account that posted this reply to gain access.
+    </h3>
+    <a asp-controller="Comments" asp-action="HandleEditError" asp-route-id="@Model.CommentId"
+       class="fs-3">
+        Go back
+    </a>
+}
+
+<script>
+    // temporary
+    document.getElementById("delete").onclick = () => window.alert("Are you sure?")
+</script>

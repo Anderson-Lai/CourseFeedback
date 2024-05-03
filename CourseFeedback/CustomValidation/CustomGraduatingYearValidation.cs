@@ -2,7 +2,7 @@
 
 namespace CourseFeedback.CustomValidation
 {
-    public class GraduatingYearValidation : ValidationAttribute
+    public class CustomGraduatingYearValidation : ValidationAttribute
     {
         protected override ValidationResult IsValid(object? value, ValidationContext validationContext)
         {
