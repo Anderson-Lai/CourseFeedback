@@ -24,7 +24,6 @@ namespace CourseFeedback.Controllers
         public async Task<IActionResult> Index(Courses course)
         {
             var result = await dbContext.Courses.Include(c => c.Comments)
-                //.OrderBy(c => c.Comments)
                 .FirstOrDefaultAsync(c => c.CourseCode == course.CourseCode);
                 
             // Include tells path for EF core
