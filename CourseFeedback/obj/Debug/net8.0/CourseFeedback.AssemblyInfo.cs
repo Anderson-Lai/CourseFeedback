@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CourseFeedback")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6fdbb59d7fe447e395c2ee97c8776f630d08a5c7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+065d75865ad1822d50ad0bb0fbc3abdc72bc06b6")]
 [assembly: System.Reflection.AssemblyProductAttribute("CourseFeedback")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CourseFeedback")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

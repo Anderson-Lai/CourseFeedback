@@ -90,7 +90,6 @@
                 ViewBag.ControllerUser = "Courses";
                 ViewBag.IsCommentOrReply = "Comment";
 
-                // null reference exception as the replies have not yet been loaded
                 var sortedComments = Model.Comments.OrderByDescending(c => c.NumberOfReplies);
 
                 @foreach (var comment in sortedComments) // was Model.Comments
