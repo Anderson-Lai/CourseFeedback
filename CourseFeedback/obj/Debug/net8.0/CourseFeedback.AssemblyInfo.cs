@@ -15,11 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CourseFeedback")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0a0fabfc5027e2d456db113f14572c9a133cca0")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+065d75865ad1822d50ad0bb0fbc3abdc72bc06b6")]
->>>>>>> ordering-comments
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f28cd485025e0ffb5d7395b8fa20e7d2181b16a6")]
 [assembly: System.Reflection.AssemblyProductAttribute("CourseFeedback")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CourseFeedback")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
